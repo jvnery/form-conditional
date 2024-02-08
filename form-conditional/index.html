@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    #nomeRequerido,#telRequerido,#emailRequerido,#mensagemNova{
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <form>
+    <select id="selectField" onchange="changeField()">
+      <option value="">Motivo</option>
+      <option value="cotacao">Cotação</option>
+      <option value="sugestao">Sugestão</option>
+      <option value="trabalheConosco">Trabalhe Conosco</option>
+    </select>
+
+    
+    <input type="text" id="nomeRequerido" name="nomeRequerido" placeholder="Nome Obrigatorio" required>
+    <input type="tel" id="telRequerido" name="telRequerido" placeholder="Telefone Obrigatorio" required>
+    <input type="email" id="emailRequerido" name="emailRequerido" placeholder="E-mail Obrigatorio" required>
+
+    <input type="text" id="nome" name="nome" placeholder="Nome">
+    <input type="tel" id="tel" name="tel" placeholder="Telefone">
+    <input type="email" id="email" name="email" placeholder="E-mail">
+
+    <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Mensagem"></textarea>
+    <textarea name="mensagemNova" id="mensagemNova" cols="30" rows="10" placeholder="Detalhes sobre o participante"></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    function changeField() {
+      var selectField = document.getElementById('selectField');
+      var nomeRequerido = document.getElementById('nomeRequerido');
+      var telRequerido = document.getElementById('telRequerido');
+      var emailRequerido = document.getElementById('emailRequerido');
+      var nome = document.getElementById('nome');
+      var tel = document.getElementById('tel');
+      var email = document.getElementById('email');
+      var mensagem = document.getElementById('mensagem');
+      var mensagemNova = document.getElementById('mensagemNova');
+
+      if (selectField.value === 'cotacao') {
+        nomeRequerido.style.display = 'block';
+        telRequerido.style.display = 'block';
+        emailRequerido.style.display = 'block';
+        nome.style.display = 'none';
+        tel.style.display = 'none';
+        email.style.display = 'none';
+
+      } else if (selectField.value != 'cotacao') {
+        nomeRequerido.style.display = 'none';
+        telRequerido.style.display = 'none';
+        emailRequerido.style.display = 'none';
+        nome.style.display = 'block';
+        tel.style.display = 'block';
+        email.style.display = 'block';
+
+      } if (selectField.value === 'trabalheConosco') {
+        mensagem.style.display = 'none';
+        mensagemNova.style.display = 'block';
+
+      } else if (selectField.value != 'trabalheConosco') {
+        mensagem.style.display = 'block';
+        mensagemNova.style.display = 'none';
+      }
+
+    }
+  </script>
+
+</body>
+</html>
